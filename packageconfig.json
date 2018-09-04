@@ -1,0 +1,11 @@
+﻿{
+
+  "gemName" : "cloudmersive-validate-api-client",
+  "gemLicense": "Apache 2.0",
+  "gemVersion": "1.2.9",
+  "gemHomepage": "https://www.cloudmersive.com/validate-api",
+  "gemSummary": "Validate key business data thoroughly.",
+  "gemDescription": "The validation APIs help you validate data. Check if an E-mail address is real. Check if a domain is real. Check up on an IP address, and even where it is located. All this and much more is available in the validation API.",
+  "gemAuthor": "Cloudmersive"
+  
+}  
