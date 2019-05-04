@@ -44,4 +44,16 @@ describe 'ScanApi' do
     end
   end
 
+  # unit tests for scan_website
+  # Scan a website for malicious content including viruses and threats (including Phishing)
+  # 
+  # @param input 
+  # @param [Hash] opts the optional parameters
+  # @return [WebsiteScanResult]
+  describe 'scan_website test' do
+    it "should work" do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end
