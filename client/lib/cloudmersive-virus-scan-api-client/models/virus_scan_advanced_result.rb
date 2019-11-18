@@ -13,23 +13,53 @@ Swagger Codegen version: 2.3.1
 require 'date'
 
 module CloudmersiveVirusScanApiClient
-  # Request to scan a website for malicious content
-  class WebsiteScanRequest
-    # URL of the website to scan; should begin with http:// or https://
-    attr_accessor :url
+  # Result of running an advanced virus scan
+  class VirusScanAdvancedResult
+    # True if the scan contained no viruses, false otherwise
+    attr_accessor :clean_result
+
+    # True if the scan contained an executable (application code), which can be a significant risk factor
+    attr_accessor :contains_executable
+
+    # True if the scan contained an invalid file (such as a PDF that is not a valid PDF, Word Document that is not a valid Word Document, etc.), which can be a significant risk factor
+    attr_accessor :contains_invalid_file
+
+    # True if the scan contained a script (such as a PHP script, Python script, etc.) which can be a significant risk factor
+    attr_accessor :contains_script
+
+    # True if the uploaded file is of a type that is not allowed based on the optional restrictFileTypes parameter, false otherwise; if restrictFileTypes is not set, this will always be false
+    attr_accessor :contains_restricted_file_format
+
+    # For file format verification-supported file formats, the contents-verified file format of the file.  Null indicates that the file format is not supported for contents verification.  If a Virus or Malware is found, this field will always be set to Null.
+    attr_accessor :verified_file_format
+
+    # Array of viruses found, if any
+    attr_accessor :found_viruses
 
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'url' => :'Url'
+        :'clean_result' => :'CleanResult',
+        :'contains_executable' => :'ContainsExecutable',
+        :'contains_invalid_file' => :'ContainsInvalidFile',
+        :'contains_script' => :'ContainsScript',
+        :'contains_restricted_file_format' => :'ContainsRestrictedFileFormat',
+        :'verified_file_format' => :'VerifiedFileFormat',
+        :'found_viruses' => :'FoundViruses'
       }
     end
 
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'url' => :'String'
+        :'clean_result' => :'BOOLEAN',
+        :'contains_executable' => :'BOOLEAN',
+        :'contains_invalid_file' => :'BOOLEAN',
+        :'contains_script' => :'BOOLEAN',
+        :'contains_restricted_file_format' => :'BOOLEAN',
+        :'verified_file_format' => :'String',
+        :'found_viruses' => :'Array<VirusFound>'
       }
     end
 
@@ -41,8 +71,34 @@ module CloudmersiveVirusScanApiClient
       # convert string to symbol for hash key
       attributes = attributes.each_with_object({}){|(k,v), h| h[k.to_sym] = v}
 
-      if attributes.has_key?(:'Url')
-        self.url = attributes[:'Url']
+      if attributes.has_key?(:'CleanResult')
+        self.clean_result = attributes[:'CleanResult']
+      end
+
+      if attributes.has_key?(:'ContainsExecutable')
+        self.contains_executable = attributes[:'ContainsExecutable']
+      end
+
+      if attributes.has_key?(:'ContainsInvalidFile')
+        self.contains_invalid_file = attributes[:'ContainsInvalidFile']
+      end
+
+      if attributes.has_key?(:'ContainsScript')
+        self.contains_script = attributes[:'ContainsScript']
+      end
+
+      if attributes.has_key?(:'ContainsRestrictedFileFormat')
+        self.contains_restricted_file_format = attributes[:'ContainsRestrictedFileFormat']
+      end
+
+      if attributes.has_key?(:'VerifiedFileFormat')
+        self.verified_file_format = attributes[:'VerifiedFileFormat']
+      end
+
+      if attributes.has_key?(:'FoundViruses')
+        if (value = attributes[:'FoundViruses']).is_a?(Array)
+          self.found_viruses = value
+        end
       end
 
     end
@@ -65,7 +121,13 @@ module CloudmersiveVirusScanApiClient
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          url == o.url
+          clean_result == o.clean_result &&
+          contains_executable == o.contains_executable &&
+          contains_invalid_file == o.contains_invalid_file &&
+          contains_script == o.contains_script &&
+          contains_restricted_file_format == o.contains_restricted_file_format &&
+          verified_file_format == o.verified_file_format &&
+          found_viruses == o.found_viruses
     end
 
     # @see the `==` method
@@ -77,7 +139,7 @@ module CloudmersiveVirusScanApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [url].hash
+      [clean_result, contains_executable, contains_invalid_file, contains_script, contains_restricted_file_format, verified_file_format, found_viruses].hash
     end
 
     # Builds the object from hash
