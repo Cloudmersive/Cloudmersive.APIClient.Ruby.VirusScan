@@ -21,6 +21,9 @@ module CloudmersiveVirusScanApiClient
     # Type of threat returned; can be None, Malware, ForcedDownload or Phishing
     attr_accessor :website_threat_type
 
+    # Array of viruses found, if any
+    attr_accessor :found_viruses
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -47,7 +50,8 @@ module CloudmersiveVirusScanApiClient
     def self.attribute_map
       {
         :'clean_result' => :'CleanResult',
-        :'website_threat_type' => :'WebsiteThreatType'
+        :'website_threat_type' => :'WebsiteThreatType',
+        :'found_viruses' => :'FoundViruses'
       }
     end
 
@@ -55,7 +59,8 @@ module CloudmersiveVirusScanApiClient
     def self.swagger_types
       {
         :'clean_result' => :'BOOLEAN',
-        :'website_threat_type' => :'String'
+        :'website_threat_type' => :'String',
+        :'found_viruses' => :'Array<VirusFound>'
       }
     end
 
@@ -73,6 +78,12 @@ module CloudmersiveVirusScanApiClient
 
       if attributes.has_key?(:'WebsiteThreatType')
         self.website_threat_type = attributes[:'WebsiteThreatType']
+      end
+
+      if attributes.has_key?(:'FoundViruses')
+        if (value = attributes[:'FoundViruses']).is_a?(Array)
+          self.found_viruses = value
+        end
       end
 
     end
@@ -108,7 +119,8 @@ module CloudmersiveVirusScanApiClient
       return true if self.equal?(o)
       self.class == o.class &&
           clean_result == o.clean_result &&
-          website_threat_type == o.website_threat_type
+          website_threat_type == o.website_threat_type &&
+          found_viruses == o.found_viruses
     end
 
     # @see the `==` method
@@ -120,7 +132,7 @@ module CloudmersiveVirusScanApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [clean_result, website_threat_type].hash
+      [clean_result, website_threat_type, found_viruses].hash
     end
 
     # Builds the object from hash
