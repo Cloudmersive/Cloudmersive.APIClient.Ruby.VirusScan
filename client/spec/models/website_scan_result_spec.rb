@@ -54,5 +54,11 @@ describe 'WebsiteScanResult' do
     end
   end
 
+  describe 'test attribute "website_http_response_code"' do
+    it 'should work' do
+       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end
 

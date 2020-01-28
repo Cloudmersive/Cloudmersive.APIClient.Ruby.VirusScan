@@ -24,6 +24,9 @@ module CloudmersiveVirusScanApiClient
     # Array of viruses found, if any
     attr_accessor :found_viruses
 
+    # The remote server URL HTTP reasponse code; useful for debugging issues with scanning; typically if the remote server returns a 200 or 300-series code this means a successful response, while a 400 or 500 series code would represent an error returned from the remote server for the provided URL.
+    attr_accessor :website_http_response_code
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -51,7 +54,8 @@ module CloudmersiveVirusScanApiClient
       {
         :'clean_result' => :'CleanResult',
         :'website_threat_type' => :'WebsiteThreatType',
-        :'found_viruses' => :'FoundViruses'
+        :'found_viruses' => :'FoundViruses',
+        :'website_http_response_code' => :'WebsiteHttpResponseCode'
       }
     end
 
@@ -60,7 +64,8 @@ module CloudmersiveVirusScanApiClient
       {
         :'clean_result' => :'BOOLEAN',
         :'website_threat_type' => :'String',
-        :'found_viruses' => :'Array<VirusFound>'
+        :'found_viruses' => :'Array<VirusFound>',
+        :'website_http_response_code' => :'Integer'
       }
     end
 
@@ -84,6 +89,10 @@ module CloudmersiveVirusScanApiClient
         if (value = attributes[:'FoundViruses']).is_a?(Array)
           self.found_viruses = value
         end
+      end
+
+      if attributes.has_key?(:'WebsiteHttpResponseCode')
+        self.website_http_response_code = attributes[:'WebsiteHttpResponseCode']
       end
 
     end
@@ -120,7 +129,8 @@ module CloudmersiveVirusScanApiClient
       self.class == o.class &&
           clean_result == o.clean_result &&
           website_threat_type == o.website_threat_type &&
-          found_viruses == o.found_viruses
+          found_viruses == o.found_viruses &&
+          website_http_response_code == o.website_http_response_code
     end
 
     # @see the `==` method
@@ -132,7 +142,7 @@ module CloudmersiveVirusScanApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [clean_result, website_threat_type, found_viruses].hash
+      [clean_result, website_threat_type, found_viruses, website_http_response_code].hash
     end
 
     # Builds the object from hash
