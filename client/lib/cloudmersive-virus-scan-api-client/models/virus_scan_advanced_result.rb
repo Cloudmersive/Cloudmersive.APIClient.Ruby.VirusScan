@@ -27,6 +27,9 @@ module CloudmersiveVirusScanApiClient
     # True if the scan contained a script (such as a PHP script, Python script, etc.) which can be a significant risk factor
     attr_accessor :contains_script
 
+    # True if the scan contained a password protected or encrypted file, which can be a significant risk factor
+    attr_accessor :contains_password_protected_file
+
     # True if the uploaded file is of a type that is not allowed based on the optional restrictFileTypes parameter, false otherwise; if restrictFileTypes is not set, this will always be false
     attr_accessor :contains_restricted_file_format
 
@@ -44,6 +47,7 @@ module CloudmersiveVirusScanApiClient
         :'contains_executable' => :'ContainsExecutable',
         :'contains_invalid_file' => :'ContainsInvalidFile',
         :'contains_script' => :'ContainsScript',
+        :'contains_password_protected_file' => :'ContainsPasswordProtectedFile',
         :'contains_restricted_file_format' => :'ContainsRestrictedFileFormat',
         :'verified_file_format' => :'VerifiedFileFormat',
         :'found_viruses' => :'FoundViruses'
@@ -57,6 +61,7 @@ module CloudmersiveVirusScanApiClient
         :'contains_executable' => :'BOOLEAN',
         :'contains_invalid_file' => :'BOOLEAN',
         :'contains_script' => :'BOOLEAN',
+        :'contains_password_protected_file' => :'BOOLEAN',
         :'contains_restricted_file_format' => :'BOOLEAN',
         :'verified_file_format' => :'String',
         :'found_viruses' => :'Array<VirusFound>'
@@ -85,6 +90,10 @@ module CloudmersiveVirusScanApiClient
 
       if attributes.has_key?(:'ContainsScript')
         self.contains_script = attributes[:'ContainsScript']
+      end
+
+      if attributes.has_key?(:'ContainsPasswordProtectedFile')
+        self.contains_password_protected_file = attributes[:'ContainsPasswordProtectedFile']
       end
 
       if attributes.has_key?(:'ContainsRestrictedFileFormat')
@@ -125,6 +134,7 @@ module CloudmersiveVirusScanApiClient
           contains_executable == o.contains_executable &&
           contains_invalid_file == o.contains_invalid_file &&
           contains_script == o.contains_script &&
+          contains_password_protected_file == o.contains_password_protected_file &&
           contains_restricted_file_format == o.contains_restricted_file_format &&
           verified_file_format == o.verified_file_format &&
           found_viruses == o.found_viruses
@@ -139,7 +149,7 @@ module CloudmersiveVirusScanApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [clean_result, contains_executable, contains_invalid_file, contains_script, contains_restricted_file_format, verified_file_format, found_viruses].hash
+      [clean_result, contains_executable, contains_invalid_file, contains_script, contains_password_protected_file, contains_restricted_file_format, verified_file_format, found_viruses].hash
     end
 
     # Builds the object from hash
