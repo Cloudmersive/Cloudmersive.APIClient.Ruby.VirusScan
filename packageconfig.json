@@ -1,11 +1,11 @@
 ﻿{
 
-  "gemName" : "cloudmersive-virus-scan-api-client",
-  "gemLicense": "Apache 2.0",
-  "gemVersion": "2.0.2",
-  "gemHomepage": "https://www.cloudmersive.com/virus-api",
-  "gemSummary": "Scan files and content for viruses.",
-  "gemDescription": "Virus API lets you scan files and content for viruses and identify security issues with content.",
-  "gemAuthor": "Cloudmersive"
-  
-}  
+    "gemName": "cloudmersive-virus-scan-api-client",
+    "gemLicense": "Apache 2.0",
+    "gemVersion": "2.0.3",
+    "gemHomepage": "https://www.cloudmersive.com/virus-api",
+    "gemSummary": "Scan files and content for viruses.",
+    "gemDescription": "Virus API lets you scan files and content for viruses and identify security issues with content.",
+    "gemAuthor": "Cloudmersive"
+
+}
