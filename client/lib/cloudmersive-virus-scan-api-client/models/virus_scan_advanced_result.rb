@@ -33,6 +33,9 @@ module CloudmersiveVirusScanApiClient
     # True if the uploaded file is of a type that is not allowed based on the optional restrictFileTypes parameter, false otherwise; if restrictFileTypes is not set, this will always be false
     attr_accessor :contains_restricted_file_format
 
+    # True if the uploaded file contains embedded Macros of other embedded threats within the document, which can be a significant risk factor
+    attr_accessor :contains_macros
+
     # For file format verification-supported file formats, the contents-verified file format of the file.  Null indicates that the file format is not supported for contents verification.  If a Virus or Malware is found, this field will always be set to Null.
     attr_accessor :verified_file_format
 
@@ -48,6 +51,7 @@ module CloudmersiveVirusScanApiClient
         :'contains_script' => :'ContainsScript',
         :'contains_password_protected_file' => :'ContainsPasswordProtectedFile',
         :'contains_restricted_file_format' => :'ContainsRestrictedFileFormat',
+        :'contains_macros' => :'ContainsMacros',
         :'verified_file_format' => :'VerifiedFileFormat',
         :'found_viruses' => :'FoundViruses'
       }
@@ -62,6 +66,7 @@ module CloudmersiveVirusScanApiClient
         :'contains_script' => :'BOOLEAN',
         :'contains_password_protected_file' => :'BOOLEAN',
         :'contains_restricted_file_format' => :'BOOLEAN',
+        :'contains_macros' => :'BOOLEAN',
         :'verified_file_format' => :'String',
         :'found_viruses' => :'Array<VirusFound>'
       }
@@ -99,6 +104,10 @@ module CloudmersiveVirusScanApiClient
         self.contains_restricted_file_format = attributes[:'ContainsRestrictedFileFormat']
       end
 
+      if attributes.has_key?(:'ContainsMacros')
+        self.contains_macros = attributes[:'ContainsMacros']
+      end
+
       if attributes.has_key?(:'VerifiedFileFormat')
         self.verified_file_format = attributes[:'VerifiedFileFormat']
       end
@@ -134,6 +143,7 @@ module CloudmersiveVirusScanApiClient
           contains_script == o.contains_script &&
           contains_password_protected_file == o.contains_password_protected_file &&
           contains_restricted_file_format == o.contains_restricted_file_format &&
+          contains_macros == o.contains_macros &&
           verified_file_format == o.verified_file_format &&
           found_viruses == o.found_viruses
     end
@@ -147,7 +157,7 @@ module CloudmersiveVirusScanApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [clean_result, contains_executable, contains_invalid_file, contains_script, contains_password_protected_file, contains_restricted_file_format, verified_file_format, found_viruses].hash
+      [clean_result, contains_executable, contains_invalid_file, contains_script, contains_password_protected_file, contains_restricted_file_format, contains_macros, verified_file_format, found_viruses].hash
     end
 
     # Builds the object from hash
