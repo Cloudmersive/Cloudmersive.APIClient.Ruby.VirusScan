@@ -17,6 +17,7 @@ require 'cloudmersive-virus-scan-api-client/version'
 require 'cloudmersive-virus-scan-api-client/configuration'
 
 # Models
+require 'cloudmersive-virus-scan-api-client/models/cloud_storage_advanced_virus_scan_result'
 require 'cloudmersive-virus-scan-api-client/models/cloud_storage_virus_found'
 require 'cloudmersive-virus-scan-api-client/models/cloud_storage_virus_scan_result'
 require 'cloudmersive-virus-scan-api-client/models/virus_found'
