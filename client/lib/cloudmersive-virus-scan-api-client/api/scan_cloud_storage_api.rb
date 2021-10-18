@@ -533,6 +533,7 @@ module CloudmersiveVirusScanApiClient
     # @param file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :tenant_id Optional; Tenant ID of your Azure Active Directory
+    # @option opts [String] :item_id SharePoint itemID, such as a DriveItem Id
     # @return [CloudStorageVirusScanResult]
     def scan_cloud_storage_scan_share_point_online_file(client_id, client_secret, sharepoint_domain_name, site_id, file_path, opts = {})
       data, _status_code, _headers = scan_cloud_storage_scan_share_point_online_file_with_http_info(client_id, client_secret, sharepoint_domain_name, site_id, file_path, opts)
@@ -548,6 +549,7 @@ module CloudmersiveVirusScanApiClient
     # @param file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :tenant_id Optional; Tenant ID of your Azure Active Directory
+    # @option opts [String] :item_id SharePoint itemID, such as a DriveItem Id
     # @return [Array<(CloudStorageVirusScanResult, Fixnum, Hash)>] CloudStorageVirusScanResult data, response status code and response headers
     def scan_cloud_storage_scan_share_point_online_file_with_http_info(client_id, client_secret, sharepoint_domain_name, site_id, file_path, opts = {})
       if @api_client.config.debugging
@@ -591,6 +593,7 @@ module CloudmersiveVirusScanApiClient
       header_params[:'siteID'] = site_id
       header_params[:'filePath'] = file_path
       header_params[:'tenantID'] = opts[:'tenant_id'] if !opts[:'tenant_id'].nil?
+      header_params[:'itemID'] = opts[:'item_id'] if !opts[:'item_id'].nil?
 
       # form parameters
       form_params = {}
@@ -616,9 +619,10 @@ module CloudmersiveVirusScanApiClient
     # @param client_secret Client Secret access credentials; see description above for instructions on how to get the Client Secret from the Azure Active Directory portal
     # @param sharepoint_domain_name SharePoint Online domain name, such as mydomain.sharepoint.com
     # @param site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from
-    # @param file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :tenant_id Optional; Tenant ID of your Azure Active Directory
+    # @option opts [String] :file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;
+    # @option opts [String] :item_id SharePoint itemID, such as a DriveItem Id
     # @option opts [BOOLEAN] :allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended).
     # @option opts [BOOLEAN] :allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended).
     # @option opts [BOOLEAN] :allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended).
@@ -627,8 +631,8 @@ module CloudmersiveVirusScanApiClient
     # @option opts [BOOLEAN] :allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended).
     # @option opts [String] :restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled.
     # @return [CloudStorageAdvancedVirusScanResult]
-    def scan_cloud_storage_scan_share_point_online_file_advanced(client_id, client_secret, sharepoint_domain_name, site_id, file_path, opts = {})
-      data, _status_code, _headers = scan_cloud_storage_scan_share_point_online_file_advanced_with_http_info(client_id, client_secret, sharepoint_domain_name, site_id, file_path, opts)
+    def scan_cloud_storage_scan_share_point_online_file_advanced(client_id, client_secret, sharepoint_domain_name, site_id, opts = {})
+      data, _status_code, _headers = scan_cloud_storage_scan_share_point_online_file_advanced_with_http_info(client_id, client_secret, sharepoint_domain_name, site_id, opts)
       data
     end
 
@@ -638,9 +642,10 @@ module CloudmersiveVirusScanApiClient
     # @param client_secret Client Secret access credentials; see description above for instructions on how to get the Client Secret from the Azure Active Directory portal
     # @param sharepoint_domain_name SharePoint Online domain name, such as mydomain.sharepoint.com
     # @param site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from
-    # @param file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;
     # @param [Hash] opts the optional parameters
     # @option opts [String] :tenant_id Optional; Tenant ID of your Azure Active Directory
+    # @option opts [String] :file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;
+    # @option opts [String] :item_id SharePoint itemID, such as a DriveItem Id
     # @option opts [BOOLEAN] :allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended).
     # @option opts [BOOLEAN] :allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended).
     # @option opts [BOOLEAN] :allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended).
@@ -649,7 +654,7 @@ module CloudmersiveVirusScanApiClient
     # @option opts [BOOLEAN] :allow_xml_external_entities Set to false to block XML External Entities and other threats embedded in XML files, and other files that contain embedded content threats. Set to true to allow these file types. Default is false (recommended).
     # @option opts [String] :restrict_file_types Specify a restricted set of file formats to allow as clean as a comma-separated list of file formats, such as .pdf,.docx,.png would allow only PDF, PNG and Word document files.  All files must pass content verification against this list of file formats, if they do not, then the result will be returned as CleanResult&#x3D;false.  Set restrictFileTypes parameter to null or empty string to disable; default is disabled.
     # @return [Array<(CloudStorageAdvancedVirusScanResult, Fixnum, Hash)>] CloudStorageAdvancedVirusScanResult data, response status code and response headers
-    def scan_cloud_storage_scan_share_point_online_file_advanced_with_http_info(client_id, client_secret, sharepoint_domain_name, site_id, file_path, opts = {})
+    def scan_cloud_storage_scan_share_point_online_file_advanced_with_http_info(client_id, client_secret, sharepoint_domain_name, site_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ScanCloudStorageApi.scan_cloud_storage_scan_share_point_online_file_advanced ...'
       end
@@ -669,10 +674,6 @@ module CloudmersiveVirusScanApiClient
       if @api_client.config.client_side_validation && site_id.nil?
         fail ArgumentError, "Missing the required parameter 'site_id' when calling ScanCloudStorageApi.scan_cloud_storage_scan_share_point_online_file_advanced"
       end
-      # verify the required parameter 'file_path' is set
-      if @api_client.config.client_side_validation && file_path.nil?
-        fail ArgumentError, "Missing the required parameter 'file_path' when calling ScanCloudStorageApi.scan_cloud_storage_scan_share_point_online_file_advanced"
-      end
       # resource path
       local_var_path = '/virus/scan/cloud-storage/sharepoint-online/site/advanced'
 
@@ -689,8 +690,9 @@ module CloudmersiveVirusScanApiClient
       header_params[:'clientSecret'] = client_secret
       header_params[:'sharepointDomainName'] = sharepoint_domain_name
       header_params[:'siteID'] = site_id
-      header_params[:'filePath'] = file_path
       header_params[:'tenantID'] = opts[:'tenant_id'] if !opts[:'tenant_id'].nil?
+      header_params[:'filePath'] = opts[:'file_path'] if !opts[:'file_path'].nil?
+      header_params[:'itemID'] = opts[:'item_id'] if !opts[:'item_id'].nil?
       header_params[:'allowExecutables'] = opts[:'allow_executables'] if !opts[:'allow_executables'].nil?
       header_params[:'allowInvalidFiles'] = opts[:'allow_invalid_files'] if !opts[:'allow_invalid_files'].nil?
       header_params[:'allowScripts'] = opts[:'allow_scripts'] if !opts[:'allow_scripts'].nil?

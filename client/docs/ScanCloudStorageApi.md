@@ -466,7 +466,8 @@ site_id = 'site_id_example' # String | Site ID (GUID) of the SharePoint site you
 file_path = 'file_path_example' # String | Path to the file within the drive, such as 'hello.pdf' or '/folder/subfolder/world.pdf'
 
 opts = { 
-  tenant_id: 'tenant_id_example' # String | Optional; Tenant ID of your Azure Active Directory
+  tenant_id: 'tenant_id_example', # String | Optional; Tenant ID of your Azure Active Directory
+  item_id: 'item_id_example' # String | SharePoint itemID, such as a DriveItem Id
 }
 
 begin
@@ -488,6 +489,7 @@ Name | Type | Description  | Notes
  **site_id** | **String**| Site ID (GUID) of the SharePoint site you wish to retrieve the file from | 
  **file_path** | **String**| Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; | 
  **tenant_id** | **String**| Optional; Tenant ID of your Azure Active Directory | [optional] 
+ **item_id** | **String**| SharePoint itemID, such as a DriveItem Id | [optional] 
 
 ### Return type
 
@@ -505,7 +507,7 @@ Name | Type | Description  | Notes
 
 
 # **scan_cloud_storage_scan_share_point_online_file_advanced**
-> CloudStorageAdvancedVirusScanResult scan_cloud_storage_scan_share_point_online_file_advanced(client_id, client_secret, sharepoint_domain_name, site_id, file_path, opts)
+> CloudStorageAdvancedVirusScanResult scan_cloud_storage_scan_share_point_online_file_advanced(client_id, client_secret, sharepoint_domain_name, site_id, opts)
 
 Advanced Virus Scan a file in a SharePoint Online Site Drive
 
@@ -533,10 +535,10 @@ sharepoint_domain_name = 'sharepoint_domain_name_example' # String | SharePoint 
 
 site_id = 'site_id_example' # String | Site ID (GUID) of the SharePoint site you wish to retrieve the file from
 
-file_path = 'file_path_example' # String | Path to the file within the drive, such as 'hello.pdf' or '/folder/subfolder/world.pdf'
-
 opts = { 
   tenant_id: 'tenant_id_example', # String | Optional; Tenant ID of your Azure Active Directory
+  file_path: 'file_path_example', # String | Path to the file within the drive, such as 'hello.pdf' or '/folder/subfolder/world.pdf'
+  item_id: 'item_id_example', # String | SharePoint itemID, such as a DriveItem Id
   allow_executables: true, # BOOLEAN | Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended).
   allow_invalid_files: true, # BOOLEAN | Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended).
   allow_scripts: true, # BOOLEAN | Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended).
@@ -548,7 +550,7 @@ opts = {
 
 begin
   #Advanced Virus Scan a file in a SharePoint Online Site Drive
-  result = api_instance.scan_cloud_storage_scan_share_point_online_file_advanced(client_id, client_secret, sharepoint_domain_name, site_id, file_path, opts)
+  result = api_instance.scan_cloud_storage_scan_share_point_online_file_advanced(client_id, client_secret, sharepoint_domain_name, site_id, opts)
   p result
 rescue CloudmersiveVirusScanApiClient::ApiError => e
   puts "Exception when calling ScanCloudStorageApi->scan_cloud_storage_scan_share_point_online_file_advanced: #{e}"
@@ -563,8 +565,9 @@ Name | Type | Description  | Notes
  **client_secret** | **String**| Client Secret access credentials; see description above for instructions on how to get the Client Secret from the Azure Active Directory portal | 
  **sharepoint_domain_name** | **String**| SharePoint Online domain name, such as mydomain.sharepoint.com | 
  **site_id** | **String**| Site ID (GUID) of the SharePoint site you wish to retrieve the file from | 
- **file_path** | **String**| Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; | 
  **tenant_id** | **String**| Optional; Tenant ID of your Azure Active Directory | [optional] 
+ **file_path** | **String**| Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39; | [optional] 
+ **item_id** | **String**| SharePoint itemID, such as a DriveItem Id | [optional] 
  **allow_executables** | **BOOLEAN**| Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended). | [optional] 
  **allow_invalid_files** | **BOOLEAN**| Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended). | [optional] 
  **allow_scripts** | **BOOLEAN**| Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended). | [optional] 

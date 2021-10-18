@@ -151,6 +151,7 @@ describe 'ScanCloudStorageApi' do
   # @param file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;
   # @param [Hash] opts the optional parameters
   # @option opts [String] :tenant_id Optional; Tenant ID of your Azure Active Directory
+  # @option opts [String] :item_id SharePoint itemID, such as a DriveItem Id
   # @return [CloudStorageVirusScanResult]
   describe 'scan_cloud_storage_scan_share_point_online_file test' do
     it 'should work' do
@@ -165,9 +166,10 @@ describe 'ScanCloudStorageApi' do
   # @param client_secret Client Secret access credentials; see description above for instructions on how to get the Client Secret from the Azure Active Directory portal
   # @param sharepoint_domain_name SharePoint Online domain name, such as mydomain.sharepoint.com
   # @param site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from
-  # @param file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;
   # @param [Hash] opts the optional parameters
   # @option opts [String] :tenant_id Optional; Tenant ID of your Azure Active Directory
+  # @option opts [String] :file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;
+  # @option opts [String] :item_id SharePoint itemID, such as a DriveItem Id
   # @option opts [BOOLEAN] :allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended).
   # @option opts [BOOLEAN] :allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended).
   # @option opts [BOOLEAN] :allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended).
