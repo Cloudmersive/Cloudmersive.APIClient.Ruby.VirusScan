@@ -39,11 +39,20 @@ module CloudmersiveVirusScanApiClient
     # True if the uploaded file contains embedded XML External Entity threats of other embedded threats within the document, which can be a significant risk factor
     attr_accessor :contains_xml_external_entities
 
+    # True if the uploaded file contains embedded Insecure Deserialization threats of other embedded threats within the document, which can be a significant risk factor
+    attr_accessor :contains_insecure_deserialization
+
+    # True if the uploaded file contains HTML, which can be a significant risk factor
+    attr_accessor :contains_html
+
     # For file format verification-supported file formats, the contents-verified file format of the file.  Null indicates that the file format is not supported for contents verification.  If a Virus or Malware is found, this field will always be set to Null.
     attr_accessor :verified_file_format
 
     # Array of viruses found, if any
     attr_accessor :found_viruses
+
+    # Contains additional non-threat content verification information
+    attr_accessor :content_information
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
@@ -56,8 +65,11 @@ module CloudmersiveVirusScanApiClient
         :'contains_restricted_file_format' => :'ContainsRestrictedFileFormat',
         :'contains_macros' => :'ContainsMacros',
         :'contains_xml_external_entities' => :'ContainsXmlExternalEntities',
+        :'contains_insecure_deserialization' => :'ContainsInsecureDeserialization',
+        :'contains_html' => :'ContainsHtml',
         :'verified_file_format' => :'VerifiedFileFormat',
-        :'found_viruses' => :'FoundViruses'
+        :'found_viruses' => :'FoundViruses',
+        :'content_information' => :'ContentInformation'
       }
     end
 
@@ -72,8 +84,11 @@ module CloudmersiveVirusScanApiClient
         :'contains_restricted_file_format' => :'BOOLEAN',
         :'contains_macros' => :'BOOLEAN',
         :'contains_xml_external_entities' => :'BOOLEAN',
+        :'contains_insecure_deserialization' => :'BOOLEAN',
+        :'contains_html' => :'BOOLEAN',
         :'verified_file_format' => :'String',
-        :'found_viruses' => :'Array<VirusFound>'
+        :'found_viruses' => :'Array<VirusFound>',
+        :'content_information' => :'AdditionalAdvancedScanInformation'
       }
     end
 
@@ -117,6 +132,14 @@ module CloudmersiveVirusScanApiClient
         self.contains_xml_external_entities = attributes[:'ContainsXmlExternalEntities']
       end
 
+      if attributes.has_key?(:'ContainsInsecureDeserialization')
+        self.contains_insecure_deserialization = attributes[:'ContainsInsecureDeserialization']
+      end
+
+      if attributes.has_key?(:'ContainsHtml')
+        self.contains_html = attributes[:'ContainsHtml']
+      end
+
       if attributes.has_key?(:'VerifiedFileFormat')
         self.verified_file_format = attributes[:'VerifiedFileFormat']
       end
@@ -125,6 +148,10 @@ module CloudmersiveVirusScanApiClient
         if (value = attributes[:'FoundViruses']).is_a?(Array)
           self.found_viruses = value
         end
+      end
+
+      if attributes.has_key?(:'ContentInformation')
+        self.content_information = attributes[:'ContentInformation']
       end
     end
 
@@ -154,8 +181,11 @@ module CloudmersiveVirusScanApiClient
           contains_restricted_file_format == o.contains_restricted_file_format &&
           contains_macros == o.contains_macros &&
           contains_xml_external_entities == o.contains_xml_external_entities &&
+          contains_insecure_deserialization == o.contains_insecure_deserialization &&
+          contains_html == o.contains_html &&
           verified_file_format == o.verified_file_format &&
-          found_viruses == o.found_viruses
+          found_viruses == o.found_viruses &&
+          content_information == o.content_information
     end
 
     # @see the `==` method
@@ -167,7 +197,7 @@ module CloudmersiveVirusScanApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [clean_result, contains_executable, contains_invalid_file, contains_script, contains_password_protected_file, contains_restricted_file_format, contains_macros, contains_xml_external_entities, verified_file_format, found_viruses].hash
+      [clean_result, contains_executable, contains_invalid_file, contains_script, contains_password_protected_file, contains_restricted_file_format, contains_macros, contains_xml_external_entities, contains_insecure_deserialization, contains_html, verified_file_format, found_viruses, content_information].hash
     end
 
     # Builds the object from hash
