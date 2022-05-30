@@ -62,4 +62,10 @@ describe 'CloudStorageVirusScanResult' do
     end
   end
 
+  describe 'test attribute "contains_content_moderation_rejection"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
 end

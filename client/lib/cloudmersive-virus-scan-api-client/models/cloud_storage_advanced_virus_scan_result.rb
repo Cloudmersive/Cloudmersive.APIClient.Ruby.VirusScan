@@ -51,6 +51,9 @@ module CloudmersiveVirusScanApiClient
     # Size in bytes of the file that was retrieved and scanned
     attr_accessor :file_size
 
+    # Contains additional non-threat content verification information
+    attr_accessor :content_information
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -65,7 +68,8 @@ module CloudmersiveVirusScanApiClient
         :'verified_file_format' => :'VerifiedFileFormat',
         :'found_viruses' => :'FoundViruses',
         :'error_detailed_description' => :'ErrorDetailedDescription',
-        :'file_size' => :'FileSize'
+        :'file_size' => :'FileSize',
+        :'content_information' => :'ContentInformation'
       }
     end
 
@@ -83,7 +87,8 @@ module CloudmersiveVirusScanApiClient
         :'verified_file_format' => :'String',
         :'found_viruses' => :'Array<CloudStorageVirusFound>',
         :'error_detailed_description' => :'String',
-        :'file_size' => :'Integer'
+        :'file_size' => :'Integer',
+        :'content_information' => :'AdditionalAdvancedScanInformation'
       }
     end
 
@@ -144,6 +149,10 @@ module CloudmersiveVirusScanApiClient
       if attributes.has_key?(:'FileSize')
         self.file_size = attributes[:'FileSize']
       end
+
+      if attributes.has_key?(:'ContentInformation')
+        self.content_information = attributes[:'ContentInformation']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -175,7 +184,8 @@ module CloudmersiveVirusScanApiClient
           verified_file_format == o.verified_file_format &&
           found_viruses == o.found_viruses &&
           error_detailed_description == o.error_detailed_description &&
-          file_size == o.file_size
+          file_size == o.file_size &&
+          content_information == o.content_information
     end
 
     # @see the `==` method
@@ -187,7 +197,7 @@ module CloudmersiveVirusScanApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [successful, clean_result, contains_executable, contains_invalid_file, contains_script, contains_password_protected_file, contains_restricted_file_format, contains_macros, verified_file_format, found_viruses, error_detailed_description, file_size].hash
+      [successful, clean_result, contains_executable, contains_invalid_file, contains_script, contains_password_protected_file, contains_restricted_file_format, contains_macros, verified_file_format, found_viruses, error_detailed_description, file_size, content_information].hash
     end
 
     # Builds the object from hash

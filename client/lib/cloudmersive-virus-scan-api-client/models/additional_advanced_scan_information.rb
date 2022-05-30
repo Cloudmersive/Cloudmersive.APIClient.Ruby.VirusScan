@@ -21,11 +21,15 @@ module CloudmersiveVirusScanApiClient
     # True if the input file contains XML data, false otherwise; this is not a threat signal
     attr_accessor :contains_xml
 
+    # True if the input file contains an image
+    attr_accessor :contains_image
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'contains_json' => :'ContainsJSON',
-        :'contains_xml' => :'ContainsXML'
+        :'contains_xml' => :'ContainsXML',
+        :'contains_image' => :'ContainsImage'
       }
     end
 
@@ -33,7 +37,8 @@ module CloudmersiveVirusScanApiClient
     def self.swagger_types
       {
         :'contains_json' => :'BOOLEAN',
-        :'contains_xml' => :'BOOLEAN'
+        :'contains_xml' => :'BOOLEAN',
+        :'contains_image' => :'BOOLEAN'
       }
     end
 
@@ -51,6 +56,10 @@ module CloudmersiveVirusScanApiClient
 
       if attributes.has_key?(:'ContainsXML')
         self.contains_xml = attributes[:'ContainsXML']
+      end
+
+      if attributes.has_key?(:'ContainsImage')
+        self.contains_image = attributes[:'ContainsImage']
       end
     end
 
@@ -73,7 +82,8 @@ module CloudmersiveVirusScanApiClient
       return true if self.equal?(o)
       self.class == o.class &&
           contains_json == o.contains_json &&
-          contains_xml == o.contains_xml
+          contains_xml == o.contains_xml &&
+          contains_image == o.contains_image
     end
 
     # @see the `==` method
@@ -85,7 +95,7 @@ module CloudmersiveVirusScanApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [contains_json, contains_xml].hash
+      [contains_json, contains_xml, contains_image].hash
     end
 
     # Builds the object from hash

@@ -30,6 +30,9 @@ module CloudmersiveVirusScanApiClient
     # Size in bytes of the file that was retrieved and scanned
     attr_accessor :file_size
 
+    # Set to true when using NSFW Content Moderation in the Cloudmersive Storage Protect product (disabled by default)
+    attr_accessor :contains_content_moderation_rejection
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -37,7 +40,8 @@ module CloudmersiveVirusScanApiClient
         :'clean_result' => :'CleanResult',
         :'found_viruses' => :'FoundViruses',
         :'error_detailed_description' => :'ErrorDetailedDescription',
-        :'file_size' => :'FileSize'
+        :'file_size' => :'FileSize',
+        :'contains_content_moderation_rejection' => :'ContainsContentModerationRejection'
       }
     end
 
@@ -48,7 +52,8 @@ module CloudmersiveVirusScanApiClient
         :'clean_result' => :'BOOLEAN',
         :'found_viruses' => :'Array<CloudStorageVirusFound>',
         :'error_detailed_description' => :'String',
-        :'file_size' => :'Integer'
+        :'file_size' => :'Integer',
+        :'contains_content_moderation_rejection' => :'BOOLEAN'
       }
     end
 
@@ -81,6 +86,10 @@ module CloudmersiveVirusScanApiClient
       if attributes.has_key?(:'FileSize')
         self.file_size = attributes[:'FileSize']
       end
+
+      if attributes.has_key?(:'ContainsContentModerationRejection')
+        self.contains_content_moderation_rejection = attributes[:'ContainsContentModerationRejection']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -105,7 +114,8 @@ module CloudmersiveVirusScanApiClient
           clean_result == o.clean_result &&
           found_viruses == o.found_viruses &&
           error_detailed_description == o.error_detailed_description &&
-          file_size == o.file_size
+          file_size == o.file_size &&
+          contains_content_moderation_rejection == o.contains_content_moderation_rejection
     end
 
     # @see the `==` method
@@ -117,7 +127,7 @@ module CloudmersiveVirusScanApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [successful, clean_result, found_viruses, error_detailed_description, file_size].hash
+      [successful, clean_result, found_viruses, error_detailed_description, file_size, contains_content_moderation_rejection].hash
     end
 
     # Builds the object from hash

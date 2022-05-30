@@ -15,5 +15,6 @@ Name | Type | Description | Notes
 **found_viruses** | [**Array&lt;CloudStorageVirusFound&gt;**](CloudStorageVirusFound.md) | Array of viruses found, if any | [optional] 
 **error_detailed_description** | **String** | Detailed error message if the operation was not successful | [optional] 
 **file_size** | **Integer** | Size in bytes of the file that was retrieved and scanned | [optional] 
+**content_information** | [**AdditionalAdvancedScanInformation**](AdditionalAdvancedScanInformation.md) | Contains additional non-threat content verification information | [optional] 
 
 

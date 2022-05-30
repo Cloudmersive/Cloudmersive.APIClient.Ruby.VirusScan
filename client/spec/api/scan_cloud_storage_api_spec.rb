@@ -39,7 +39,7 @@ describe 'ScanCloudStorageApi' do
   # @param secret_key AWS S3 secret key for the S3 bucket; you can get this from My Security Credentials in the AWS console
   # @param bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39;
   # @param bucket_name Name of the S3 bucket
-  # @param key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses
+  # @param key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
   # @param [Hash] opts the optional parameters
   # @return [CloudStorageVirusScanResult]
   describe 'scan_cloud_storage_scan_aws_s3_file test' do
@@ -55,7 +55,7 @@ describe 'ScanCloudStorageApi' do
   # @param secret_key AWS S3 secret key for the S3 bucket; you can get this from My Security Credentials in the AWS console
   # @param bucket_region Name of the region of the S3 bucket, such as &#39;US-East-1&#39;
   # @param bucket_name Name of the S3 bucket
-  # @param key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses
+  # @param key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
   # @param [Hash] opts the optional parameters
   # @option opts [BOOLEAN] :allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended).
   # @option opts [BOOLEAN] :allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended).
@@ -76,7 +76,7 @@ describe 'ScanCloudStorageApi' do
   # Scan the contents of a single Azure Blob and its content for viruses. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Continuous cloud-based updates.  Wide file format support including Office, PDF, HTML, Flash.  Zip support including .Zip, .Rar, .DMG, .Tar, and other archive formats.  Multi-threat scanning across viruses, malware, trojans, ransomware, and spyware.  High-speed in-memory scanning delivers subsecond typical response time.
   # @param connection_string Connection string for the Azure Blob Storage Account; you can get this connection string from the Access Keys tab of the Storage Account blade in the Azure Portal.
   # @param container_name Name of the Blob container within the Azure Blob Storage account
-  # @param blob_path Path to the blob within the container, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;
+  # @param blob_path Path to the blob within the container, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;.  If the blob path contains Unicode characters, you must base64 encode the blob path and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
   # @param [Hash] opts the optional parameters
   # @return [CloudStorageVirusScanResult]
   describe 'scan_cloud_storage_scan_azure_blob test' do
@@ -90,7 +90,7 @@ describe 'ScanCloudStorageApi' do
   # Advanced Scan the contents of a single Azure Blob and its content for viruses and threats.  Advanced Scan files with 360-degree Content Protection across Viruses and Malware, executables, invalid files, scripts, and even restrictions on accepted file types with complete content verification. Customize threat rules to your needs. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Continuous cloud-based updates.  Block threats beyond viruses including executables, scripts, invalid files, and more.  Optionally limit input files to a specific set of file types (e.g. PDF and Word Documents only).  Wide file format support including Office, PDF, HTML, Flash.  Zip support including .Zip, .Rar, .DMG, .Tar, and other archive formats.  Multi-threat scanning across viruses, malware, trojans, ransomware, and spyware.  High-speed in-memory scanning delivers subsecond typical response time.
   # @param connection_string Connection string for the Azure Blob Storage Account; you can get this connection string from the Access Keys tab of the Storage Account blade in the Azure Portal.
   # @param container_name Name of the Blob container within the Azure Blob Storage account
-  # @param blob_path Path to the blob within the container, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;
+  # @param blob_path Path to the blob within the container, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;.  If the blob path contains Unicode characters, you must base64 encode the blob path and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
   # @param [Hash] opts the optional parameters
   # @option opts [BOOLEAN] :allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended).
   # @option opts [BOOLEAN] :allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended).
@@ -110,7 +110,7 @@ describe 'ScanCloudStorageApi' do
   # Scan an Google Cloud Platform (GCP) Storage file for viruses
   # Scan the contents of a single Google Cloud Platform (GCP) Storage file and its content for viruses. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Continuous cloud-based updates.  Wide file format support including Office, PDF, HTML, Flash.  Zip support including .Zip, .Rar, .DMG, .Tar, and other archive formats.  Multi-threat scanning across viruses, malware, trojans, ransomware, and spyware.  High-speed in-memory scanning delivers subsecond typical response time.
   # @param bucket_name Name of the bucket in Google Cloud Storage
-  # @param object_name Name of the object or file in Google Cloud Storage
+  # @param object_name Name of the object or file in Google Cloud Storage.  If the object name contains Unicode characters, you must base64 encode the object name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
   # @param json_credential_file Service Account credential for Google Cloud stored in a JSON file.
   # @param [Hash] opts the optional parameters
   # @return [CloudStorageVirusScanResult]
@@ -124,7 +124,7 @@ describe 'ScanCloudStorageApi' do
   # Advanced Scan an Google Cloud Platform (GCP) Storage file for viruses
   # Advanced Scan the contents of a single Google Cloud Platform (GCP) Storage file and its content for viruses and threats. Advanced Scan files with 360-degree Content Protection across Viruses and Malware, executables, invalid files, scripts, and even restrictions on accepted file types with complete content verification. Customize threat rules to your needs. Leverage continuously updated signatures for millions of threats, and advanced high-performance scanning capabilities.  Over 17 million virus and malware signatures.  Continuous cloud-based updates.  Block threats beyond viruses including executables, scripts, invalid files, and more.  Optionally limit input files to a specific set of file types (e.g. PDF and Word Documents only).  Wide file format support including Office, PDF, HTML, Flash.  Zip support including .Zip, .Rar, .DMG, .Tar, and other archive formats.  Multi-threat scanning across viruses, malware, trojans, ransomware, and spyware.  High-speed in-memory scanning delivers subsecond typical response time.
   # @param bucket_name Name of the bucket in Google Cloud Storage
-  # @param object_name Name of the object or file in Google Cloud Storage
+  # @param object_name Name of the object or file in Google Cloud Storage.  If the object name contains Unicode characters, you must base64 encode the object name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
   # @param json_credential_file Service Account credential for Google Cloud stored in a JSON file.
   # @param [Hash] opts the optional parameters
   # @option opts [BOOLEAN] :allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended).
@@ -148,7 +148,7 @@ describe 'ScanCloudStorageApi' do
   # @param client_secret Client Secret access credentials; see description above for instructions on how to get the Client Secret from the Azure Active Directory portal
   # @param sharepoint_domain_name SharePoint Online domain name, such as mydomain.sharepoint.com
   # @param site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from
-  # @param file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;
+  # @param file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;.  If the file path contains Unicode characters, you must base64 encode the file path and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
   # @param [Hash] opts the optional parameters
   # @option opts [String] :tenant_id Optional; Tenant ID of your Azure Active Directory
   # @option opts [String] :item_id SharePoint itemID, such as a DriveItem Id
@@ -168,7 +168,7 @@ describe 'ScanCloudStorageApi' do
   # @param site_id Site ID (GUID) of the SharePoint site you wish to retrieve the file from
   # @param [Hash] opts the optional parameters
   # @option opts [String] :tenant_id Optional; Tenant ID of your Azure Active Directory
-  # @option opts [String] :file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;
+  # @option opts [String] :file_path Path to the file within the drive, such as &#39;hello.pdf&#39; or &#39;/folder/subfolder/world.pdf&#39;.  If the file path contains Unicode characters, you must base64 encode the file path and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
   # @option opts [String] :item_id SharePoint itemID, such as a DriveItem Id
   # @option opts [BOOLEAN] :allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended).
   # @option opts [BOOLEAN] :allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended).
