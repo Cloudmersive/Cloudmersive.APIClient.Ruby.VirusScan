@@ -1,1 +1,1 @@
-& gem push .\client\cloudmersive-virus-scan-api-client-2.1.0.gem
+& gem push .\client\cloudmersive-virus-scan-api-client-2.1.1.gem
