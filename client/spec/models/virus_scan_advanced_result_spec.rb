@@ -92,6 +92,12 @@ describe 'VirusScanAdvancedResult' do
     end
   end
 
+  describe 'test attribute "contains_unsafe_archive"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "verified_file_format"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

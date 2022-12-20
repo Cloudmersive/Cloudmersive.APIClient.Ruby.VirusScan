@@ -11,5 +11,5 @@ Swagger Codegen version: 2.4.14
 =end
 
 module CloudmersiveVirusScanApiClient
-  VERSION = '2.1.1'
+  VERSION = '2.1.2'
 end

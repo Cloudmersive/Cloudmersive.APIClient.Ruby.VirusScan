@@ -45,6 +45,9 @@ module CloudmersiveVirusScanApiClient
     # True if the uploaded file contains HTML, which can be a significant risk factor
     attr_accessor :contains_html
 
+    # True if the uploaded file contains unsafe archive (e.g. zip) content, such as a Zip Bomb, or other configurations of a zip file that could lead to an unsafe extraction
+    attr_accessor :contains_unsafe_archive
+
     # For file format verification-supported file formats, the contents-verified file format of the file.  Null indicates that the file format is not supported for contents verification.  If a Virus or Malware is found, this field will always be set to Null.
     attr_accessor :verified_file_format
 
@@ -67,6 +70,7 @@ module CloudmersiveVirusScanApiClient
         :'contains_xml_external_entities' => :'ContainsXmlExternalEntities',
         :'contains_insecure_deserialization' => :'ContainsInsecureDeserialization',
         :'contains_html' => :'ContainsHtml',
+        :'contains_unsafe_archive' => :'ContainsUnsafeArchive',
         :'verified_file_format' => :'VerifiedFileFormat',
         :'found_viruses' => :'FoundViruses',
         :'content_information' => :'ContentInformation'
@@ -86,6 +90,7 @@ module CloudmersiveVirusScanApiClient
         :'contains_xml_external_entities' => :'BOOLEAN',
         :'contains_insecure_deserialization' => :'BOOLEAN',
         :'contains_html' => :'BOOLEAN',
+        :'contains_unsafe_archive' => :'BOOLEAN',
         :'verified_file_format' => :'String',
         :'found_viruses' => :'Array<VirusFound>',
         :'content_information' => :'AdditionalAdvancedScanInformation'
@@ -140,6 +145,10 @@ module CloudmersiveVirusScanApiClient
         self.contains_html = attributes[:'ContainsHtml']
       end
 
+      if attributes.has_key?(:'ContainsUnsafeArchive')
+        self.contains_unsafe_archive = attributes[:'ContainsUnsafeArchive']
+      end
+
       if attributes.has_key?(:'VerifiedFileFormat')
         self.verified_file_format = attributes[:'VerifiedFileFormat']
       end
@@ -183,6 +192,7 @@ module CloudmersiveVirusScanApiClient
           contains_xml_external_entities == o.contains_xml_external_entities &&
           contains_insecure_deserialization == o.contains_insecure_deserialization &&
           contains_html == o.contains_html &&
+          contains_unsafe_archive == o.contains_unsafe_archive &&
           verified_file_format == o.verified_file_format &&
           found_viruses == o.found_viruses &&
           content_information == o.content_information
@@ -197,7 +207,7 @@ module CloudmersiveVirusScanApiClient
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [clean_result, contains_executable, contains_invalid_file, contains_script, contains_password_protected_file, contains_restricted_file_format, contains_macros, contains_xml_external_entities, contains_insecure_deserialization, contains_html, verified_file_format, found_viruses, content_information].hash
+      [clean_result, contains_executable, contains_invalid_file, contains_script, contains_password_protected_file, contains_restricted_file_format, contains_macros, contains_xml_external_entities, contains_insecure_deserialization, contains_html, contains_unsafe_archive, verified_file_format, found_viruses, content_information].hash
     end
 
     # Builds the object from hash
