@@ -27,6 +27,7 @@ module CloudmersiveVirusScanApiClient
     # @param bucket_name Name of the S3 bucket
     # @param key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
     # @return [CloudStorageVirusScanResult]
     def scan_cloud_storage_scan_aws_s3_file(access_key, secret_key, bucket_region, bucket_name, key_name, opts = {})
       data, _status_code, _headers = scan_cloud_storage_scan_aws_s3_file_with_http_info(access_key, secret_key, bucket_region, bucket_name, key_name, opts)
@@ -41,6 +42,7 @@ module CloudmersiveVirusScanApiClient
     # @param bucket_name Name of the S3 bucket
     # @param key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
     # @return [Array<(CloudStorageVirusScanResult, Fixnum, Hash)>] CloudStorageVirusScanResult data, response status code and response headers
     def scan_cloud_storage_scan_aws_s3_file_with_http_info(access_key, secret_key, bucket_region, bucket_name, key_name, opts = {})
       if @api_client.config.debugging
@@ -83,6 +85,7 @@ module CloudmersiveVirusScanApiClient
       header_params[:'bucketRegion'] = bucket_region
       header_params[:'bucketName'] = bucket_name
       header_params[:'keyName'] = key_name
+      header_params[:'roleArn'] = opts[:'role_arn'] if !opts[:'role_arn'].nil?
 
       # form parameters
       form_params = {}
@@ -110,6 +113,7 @@ module CloudmersiveVirusScanApiClient
     # @param bucket_name Name of the S3 bucket
     # @param key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
     # @option opts [BOOLEAN] :allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended).
     # @option opts [BOOLEAN] :allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended).
     # @option opts [BOOLEAN] :allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended).
@@ -133,6 +137,7 @@ module CloudmersiveVirusScanApiClient
     # @param bucket_name Name of the S3 bucket
     # @param key_name Key name (also called file name) of the file in S3 that you wish to scan for viruses.  If the key name contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :role_arn Optional: Role ARN for STS Credential-based access.  This is for advanced access using the Security Token Service and is not required.  If the roleArn contains Unicode characters, you must base64 encode the key name and prepend it with &#39;base64:&#39;, such as: &#39;base64:6ZWV6ZWV6ZWV6ZWV6ZWV6ZWV&#39;.
     # @option opts [BOOLEAN] :allow_executables Set to false to block executable files (program code) from being allowed in the input file.  Default is false (recommended).
     # @option opts [BOOLEAN] :allow_invalid_files Set to false to block invalid files, such as a PDF file that is not really a valid PDF file, or a Word Document that is not a valid Word Document.  Default is false (recommended).
     # @option opts [BOOLEAN] :allow_scripts Set to false to block script files, such as a PHP files, Python scripts, and other malicious content or security threats that can be embedded in the file.  Set to true to allow these file types.  Default is false (recommended).
@@ -184,6 +189,7 @@ module CloudmersiveVirusScanApiClient
       header_params[:'bucketRegion'] = bucket_region
       header_params[:'bucketName'] = bucket_name
       header_params[:'keyName'] = key_name
+      header_params[:'roleArn'] = opts[:'role_arn'] if !opts[:'role_arn'].nil?
       header_params[:'allowExecutables'] = opts[:'allow_executables'] if !opts[:'allow_executables'].nil?
       header_params[:'allowInvalidFiles'] = opts[:'allow_invalid_files'] if !opts[:'allow_invalid_files'].nil?
       header_params[:'allowScripts'] = opts[:'allow_scripts'] if !opts[:'allow_scripts'].nil?
